@@ -1,0 +1,11 @@
+<div class="row text-center">
+  <h1>Pokemon List</h1>
+  <%= link_to "뒤로가기", root_path, class: "btn btn-default" %>
+  <%= link_to "포켓몬 만들기", new_pokemon_path(user_id: current_user), class: "btn btn-primary" %>
+  <% if flash[:warning].present? %>
+    <%= content_tag :div, flash[:warning] %>
+  <% end %>
+</div>
+<% if user_signed_in? %>
+  <%= render partial: 'pokemons/list', locals: {pokemons: @pokemons } %>
+<% end %>
