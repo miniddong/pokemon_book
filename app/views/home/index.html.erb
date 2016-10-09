@@ -1,9 +1,10 @@
 <div class="row text-center">
   <% if user_signed_in? %>
     <%= link_to "로그아웃", destroy_user_session_path, class: 'btn btn-danger', method: "DELETE" %>
-      <%= link_to "포켓몬 리스트 보기", pokemons_path %>
+    <%= link_to "포켓몬 리스트 보기", pokemons_path %>
   <% else %>
     <%= link_to "로그인하기", new_user_session_path, class: 'btn btn-success' %>
+    <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: 'btn btn-primary' %>
     <%= link_to "가입하기", new_user_registration_path, class: 'btn btn-warning' %>
   <% end %>
 </div>

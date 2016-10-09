@@ -1,7 +1,9 @@
 class PokemonsController < ApplicationController
 
+  load_and_authorize_resource
+  skip_load_and_authorize_resource only: [:new, :create]
+
   def index
-    @pokemon = Pokemon.all ##
 
     respond_to do |format|
       format.html # index.html.erb
@@ -9,7 +11,6 @@ class PokemonsController < ApplicationController
     end
   end
   def show
-    @pokemon = Pokemon.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
