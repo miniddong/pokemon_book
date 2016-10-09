@@ -17,6 +17,7 @@ class PokemonsController < ApplicationController
       format.xml  { render xml: '/' }
     end
   end
+
   def new
     @user = params[:user_id]
     @pokemon = Pokemon.new
@@ -26,6 +27,7 @@ class PokemonsController < ApplicationController
       format.xml  { render xml: @pokemon }
     end
   end
+
   def create
     @pokemon = Pokemon.new(pokemon_params)
 

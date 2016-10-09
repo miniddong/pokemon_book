@@ -3,13 +3,20 @@ class Ability
 
   def initialize(user)
 
-    if user.has_role? :admin
-      can :manage, :all
+    if user.has_role? :admin  #Rolify
+      can :manage, :all # CanCan
+      can :access, :rails_admin
+      can :dashboard
     end
+
 		#trainer
 		can :manage, Pokemon, user_id: user.id if user.has_role? :trainer, Pokemon
+    # Pokemon.where(user_id : user.id)
+
     # gymleader
     can :read, Pokemon if user.has_role? :gymleader, Pokemon
+    # :read - Pokemon이라는 리소스에 대해서 :index, :show
+
 		can :manage, Pokemon, user_id: user.id if user.has_role? :gymleader, Pokemon
 
     # Define abilities for the passed in user here. For example:
